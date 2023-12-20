@@ -26,7 +26,7 @@ module.exports = {
 /*         'logo': ['var(--font-baileywick'] */
       },
       colors: {
-        primary: colors.rose,
+        primary: colors.red,
         gray: colors.stone,
       },
       // @ts-ignore

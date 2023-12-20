@@ -22,12 +22,14 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
+        sans: ['var(--font-degular)', ...fontFamily.sans],
+/*         'logo': ['var(--font-baileywick'] */
       },
       colors: {
-        primary: colors.pink,
-        gray: colors.gray,
+        primary: colors.rose,
+        gray: colors.stone,
       },
+      // @ts-ignore
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {

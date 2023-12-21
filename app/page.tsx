@@ -8,8 +8,8 @@ export default async function Page() {
   const posts = allCoreContent(sortedPosts)
   return (
   <>
-    <Main posts={posts} />
-    {/* <Browse /> */}
+    {/* <Main posts={posts} /> */}
+    <Browse posts={posts} />
   </>
   )
 }

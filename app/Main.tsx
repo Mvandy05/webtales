@@ -3,10 +3,16 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
+import { CoreContent } from 'pliny/utils/contentlayer'
+import { Blog } from 'contentlayer/generated'
 
 const MAX_DISPLAY = 5
 
-export default function Home({ posts }) {
+interface Props {
+  stories: CoreContent<Blog>[]
+}
+
+export default function Home({ stories }: Props) {
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -19,9 +25,9 @@ export default function Home({ posts }) {
           </p>
         </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          {!posts.length && 'No posts found.'}
-          {posts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug, date, title, summary, tags, twImages } = post;
+          {!stories.length && 'No stories found.'}
+          {stories.slice(0, MAX_DISPLAY).map((story) => {
+            const { slug, date, title, summary, tags, images } = story;
             return (
               <li key={slug} className="py-12">
                 <article>
@@ -70,14 +76,14 @@ export default function Home({ posts }) {
           })}
         </ul>
       </div>
-      {posts.length > MAX_DISPLAY && (
+      {stories.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base font-medium leading-6">
           <Link
             href="/blog"
             className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-            aria-label="All posts"
+            aria-label="All stories"
           >
-            All Posts &rarr;
+            All stories &rarr;
           </Link>
         </div>
       )}

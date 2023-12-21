@@ -1,16 +1,19 @@
+"use client";
+
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import { useRef, useState } from 'react'
-import { Movie } from '../typings'
-import Thumbnail from './Thumbnail'
+import { CoreContent } from "pliny/utils/contentlayer"
+import { Blog } from "contentlayer/generated"
+import Thumbnail from './thumbnail';
 
 interface Props {
   title: string
   // When using firebase
   // movie: Movie | DocumentData[]
-  movies: Movie[]
+  stories: CoreContent<Blog>[]
 }
 
-function Row({ title, movies }: Props) {
+function Row({ title, stories }: Props) {
   const rowRef = useRef<HTMLDivElement>(null)
   const [isMoved, setIsMoved] = useState(false)
 
@@ -46,8 +49,8 @@ function Row({ title, movies }: Props) {
           ref={rowRef}
           className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2"
         >
-          {movies.map((movie) => (
-            <Thumbnail key={movie.id} movie={movie} />
+          {stories.map((story) => (
+            <Thumbnail key={story.slug} story={story} />
           ))}
         </div>
 
@@ -60,4 +63,4 @@ function Row({ title, movies }: Props) {
   )
 }
 
-export default Row
+export default Row;

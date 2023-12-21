@@ -1,18 +1,16 @@
 import { CoreContent } from "pliny/utils/contentlayer"
 import { Blog } from "contentlayer/generated"
-
-
-
+import Row from '../components/Row'
 
 interface Props {
     posts: CoreContent<Blog>[]
 }
 
 const Browse = ({posts}: Props) => {
-    let recentStories = [];
-    let romanceStories = [];
-    let tragicStories = [];
-    let forbiddenStories = [];
+    let recentStories: CoreContent<Blog>[] = [];
+    let romanceStories: CoreContent<Blog>[] = [];
+    let tragicStories: CoreContent<Blog>[] = [];
+    let forbiddenStories: CoreContent<Blog>[] = [];
     
     posts.map((post) => {
         const postDate = new Date(post.date)
@@ -21,50 +19,48 @@ const Browse = ({posts}: Props) => {
         };
         
         romanceStories.push({...post, tags: post.tags.filter((tag) => tag === 'romance')});
-        
         tragicStories.push({...post, tags: post.tags.filter((tag) => tag === 'tragic')});
-        
         forbiddenStories.push({...post, tags: post.tags.filter((tag) => tag === 'forbidden')});
     })
 
 
 
-  const { loading } = useAuth()
+  /* const { loading } = useAuth()
   const showModal = useRecoilValue(modalState)
 
-  if (loading) return null
+  if (loading) return null */
 
   return (
     <div
-      className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${
+      className={`relative h-screen bg-gradient-to-b lg:h-[140vh]`} 
+      /* ${
         showModal && '!h-screen overflow-hidden'
-      }`}
+      } */
     >
-      <Head>
+{/*       <Head>
         <title>Home - Netflix</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </Head> */}
 
-      <Header />
+{/*       <Header /> */}
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
-        <Banner netflixOriginals={netflixOriginals} />
         <section className="md:space-y-24">
-          <Row title="New Releases" movies={recentStories} />
+          <Row title="New Releases" stories={recentStories} />
 {/*           <Row title="Top Rated" movies={topRated} /> */}
-          <Row title="Romance Stories" movies={romanceStories} />
+          <Row title="Romance Stories" stories={romanceStories} />
           {/* Add a "My List" Row for Saved Stories */}
-          <Row title="Tragic Stories" movies={tragicStories} />
-          <Row title="Forbidden Stories" movies={forbiddenStories} />
+          <Row title="Tragic Stories" stories={tragicStories} />
+          <Row title="Forbidden Stories" stories={forbiddenStories} />
         </section>
       </main>
-      {showModal && <Modal />}
+      {/* {showModal && <Modal />} */}
     </div>
   )
 }
 
 export default Browse;
 
-export const getServerSideProps = async () => {
+/* export const getServerSideProps = async () => {
   const [
     netflixOriginals,
     trendingNow,
@@ -97,4 +93,4 @@ export const getServerSideProps = async () => {
       documentaries: documentaries.results,
     },
   }
-}
+} */

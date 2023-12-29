@@ -89,5 +89,5 @@ module.exports = () => {
 
       return config
     },
-  })
+  });
 }

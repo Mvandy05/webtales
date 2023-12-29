@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/legacy/image"
 /* import { useRecoilState } from 'recoil'
 import { modalState, movieState } from '../atoms/modalAtom' */
 

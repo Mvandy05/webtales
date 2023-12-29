@@ -1,4 +1,4 @@
-import Image from "next/legacy/image"
+import Image from "next/image"
 /* import { useRecoilState } from 'recoil'
 import { modalState, movieState } from '../atoms/modalAtom' */
 
@@ -32,10 +32,10 @@ function Thumbnail({ story }: Props) {
         src={imgSrc}
         className="rounded-sm object-cover md:rounded"
         alt=""
-        layout="fill"
-      />
+        fill
+        sizes="100vw" />
     </div>
-  )
+  );
 }
 
 export default Thumbnail

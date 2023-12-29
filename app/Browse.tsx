@@ -18,11 +18,10 @@ const Browse = ({posts}: Props) => {
             recentStories.push(post)
         };
         
-        romanceStories.push({...post, tags: post.tags.filter((tag) => tag === 'romance')});
-        tragicStories.push({...post, tags: post.tags.filter((tag) => tag === 'tragic')});
-        forbiddenStories.push({...post, tags: post.tags.filter((tag) => tag === 'forbidden')});
+        post.tags.filter((tag) => tag === 'romance') ? romanceStories.push(post) : null;
+        post.tags.filter((tag) => tag === 'tragic') ? tragicStories.push(post) : null;
+        post.tags.filter((tag) => tag === 'forbidden') ? romanceStories.push(post) : null;
     })
-
 
 
   /* const { loading } = useAuth()

@@ -15,7 +15,7 @@ function Thumbnail({ story }: Props) {
     let imgSrc = "";
 
   if (story.images?.length > 0) {
-    imgSrc= story.images[0];
+    imgSrc = story.images[0];
   } else {
     imgSrc = '/static/images/ocean.jpeg'
   }
@@ -31,8 +31,8 @@ function Thumbnail({ story }: Props) {
       <Image
         src={imgSrc}
         className="rounded-sm object-cover md:rounded"
-        layout="fill"
         alt=""
+        layout="fill"
       />
     </div>
   )

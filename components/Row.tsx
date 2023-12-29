@@ -4,7 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import { useRef, useState } from 'react'
 import { CoreContent } from "pliny/utils/contentlayer"
 import { Blog } from "contentlayer/generated"
-import Thumbnail from './thumbnail';
+import Thumbnail from './Thumbnail';
 
 interface Props {
   title: string

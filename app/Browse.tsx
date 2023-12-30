@@ -17,12 +17,13 @@ const Browse = ({posts}: Props) => {
         if (Date.now() - (5 * 1000 * 60 * 60 * 24) < postDate.valueOf()) {
             recentStories.push(post)
         };
-        
-        post.tags.filter((tag) => tag === 'romance') ? romanceStories.push(post) : null;
-        post.tags.filter((tag) => tag === 'tragic') ? tragicStories.push(post) : null;
-        post.tags.filter((tag) => tag === 'forbidden') ? romanceStories.push(post) : null;
+
+        post.tags.includes('romance') ? romanceStories.push(post) : null;
+        post.tags.includes('tragic') ? tragicStories.push(post) : null;
+        post.tags.includes('forbidden') ? forbiddenStories.push(post) : null;
     })
 
+    console.log(romanceStories)
 
   /* const { loading } = useAuth()
   const showModal = useRecoilValue(modalState)

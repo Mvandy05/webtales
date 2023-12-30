@@ -28,12 +28,14 @@ function Thumbnail({ story }: Props) {
         setShowModal(true)
       }} */
     >
+      <h2 className="relative z-20">{story.title}</h2>
       <Image
         src={imgSrc}
         className="rounded-sm object-cover md:rounded"
         alt=""
         fill
         sizes="100vw" />
+        
     </div>
   );
 }

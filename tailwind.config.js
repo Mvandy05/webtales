@@ -22,14 +22,12 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-degular)', ...fontFamily.sans],
-/*         'logo': ['var(--font-baileywick'] */
+        sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
       },
       colors: {
-        primary: colors.red,
-        gray: colors.stone,
+        primary: colors.pink,
+        gray: colors.gray,
       },
-      // @ts-ignore
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
@@ -69,9 +67,5 @@ module.exports = {
       }),
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'), 
-    require('@tailwindcss/typography'),
-    require('tailwind-scrollbar-hide')
-  ],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 }

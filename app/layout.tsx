@@ -1,7 +1,7 @@
 import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 
-import localFont from 'next/font/local'
+import { Space_Grotesk } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
@@ -11,31 +11,11 @@ import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 
-const degular = localFont({
-  src: [
-    {
-      path: './../public/static/fonts/DegularTextThin.woff',
-      weight: '200',
-      style: 'normal',
-    },
-    {
-      path: './../public/static/fonts/DegularTextRegular.woff',
-      weight: '400',
-      style: 'normal'
-    },
-    {
-      path: './../public/static/fonts/DegularTextSemiBold.woff',
-      weight: '600',
-      style: 'normal'
-    },
-    {
-      path: './../public/static/fonts/DegularTextBlack.woff',
-      weight: '800',
-      style: 'normal'
-    }
-  ],
-  variable: '--font-degular'
-});
+const space_grotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-space-grotesk',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
@@ -81,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={siteMetadata.language}
-      className={`${degular.variable} scroll-smooth`}
+      className={`${space_grotesk.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
@@ -96,7 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-
+          <SectionContainer>
             <div className="flex h-screen flex-col justify-between font-sans">
               <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
                 <Header />
@@ -104,7 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </SearchProvider>
               <Footer />
             </div>
-
+          </SectionContainer>
         </ThemeProviders>
       </body>
     </html>
